@@ -1,0 +1,37 @@
+.navbar {
+    display: flex;
+    justify-content: normal;
+    align-items: normal;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background: black;
+}
+
+.card {
+    border-radius: 2px;
+}
+
+.br {
+    border-radius: 4px;
+}
+
+.btn-anim {
+    transition: all 0.3s ease;
+}
+
+    .btn-anim:active {
+        transform: scale(0.9);
+    }
+
+
+
+.textlight {
+    color: white;
+}
+
+    .textlight:hover {
+        color: cyan;
+    }
