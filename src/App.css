@@ -8,6 +8,8 @@
     width: 100%;
     z-index: 10;
     background: black;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .card {
@@ -17,6 +19,12 @@
 .br {
     border-radius: 4px;
 }
+.backg {
+    background-color: white;
+    color: black;
+    
+}
+
 
 .btn-anim {
     transition: all 0.3s ease;
