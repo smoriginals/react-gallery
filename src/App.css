@@ -13,9 +13,11 @@
 }
 
 .card {
-    border-radius: 2px;
+    box-shadow:0px 5px 10px rgba(0,255,100,0.5);
 }
-
+.card-bg{
+    background-color:#ccc;
+}
 .br {
     border-radius: 4px;
 }

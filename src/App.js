@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import Navbar from './components/Navbar';
 import Cards from './components/Cards';
 import { Routes, Route } from 'react-router-dom';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import LoadingBar from "react-top-loading-bar";
 import Photos from './Routes/photos';
 
@@ -18,14 +18,15 @@ export default function App(props) {
             <LoadingBar
                 color="green"
                 progress={progress}
-                onLoaderFinished={()=>setProgress(0)}
+                onLoaderFinished={() => setProgress(0)}
             />
 
             <Navbar title="SMOS Gallery" />
-            <Photos/>
-            <Routes>
-               <Route/>
-            </Routes>
+
+            <div className="container">
+                <Photos />
+            </div>
+
         </>
     );
 }
