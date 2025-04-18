@@ -7,29 +7,21 @@ export default function Navbar(props) {
 
     const HandleChange = (e) => {
         setInputValue(e.target.value);
-        console.log(e.target.value);
-        if (e.key === 'Enter') {
-            console.log('Enter key pressed');
-        }
+    }
 
-    }
     const HandleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            if (inputValue.trim() !== '') {
-                HandleClick();
-            }
+        if (e.key === 'Enter' && inputValue.trim() !== '') {
+            HandleClick();
         }
     }
-    const HandleClick = (e) => {
-        if (inputValue.trim() === '') {
-            console.log('Empty');
-        }
-        else {
-            console.log(inputValue);
+
+    const HandleClick = () => {
+        if (inputValue.trim() !== '') {
+            props.setSearchTerm(inputValue.trim());
             setInputValue('');
         }
     }
-    
+
     return (
         <>
             <nav className="navbar navbar-expand-lg backg">
@@ -65,7 +57,7 @@ export default function Navbar(props) {
                                 <Link className="nav-link mx-1 backg" to="/3d">3D</Link>
                             </li>
                         </ul>
-                       
+
                     </div>
                 </div>
             </nav>
@@ -74,7 +66,6 @@ export default function Navbar(props) {
                     <div className="d-flex">
                         <input className="form-control mx-2 br" placeholder='Search For Free Images...' onChange={HandleChange} onKeyDown={HandleKeyPress} />
                         <button className="btn btn-primary btn-anim br" onClick={HandleClick}>Search</button>
-                        
                     </div>
                 </div>
             </div>

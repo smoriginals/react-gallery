@@ -4,7 +4,7 @@ import LoadingBar from "react-top-loading-bar";
 import '../App.css';
 
 
-export default function Photos(props) {
+export default function Photos(searchTerm) {
 
     const API_KEY = process.env.REACT_APP_GALLERY_KEY;
 
@@ -12,9 +12,10 @@ export default function Photos(props) {
     const [progress, setProgress] = useState(10);
 
 
-    const FetchData = async () => {
+    const FetchData = React.useCallback(async () => {
         setProgress(30);
-        let url = `https://pixabay.com/api/?key=${API_KEY}&q=sports+game&image_type=all`;
+        const encodedQuery = encodeURIComponent(searchTerm);
+        let url = `https://pixabay.com/api/?key=${API_KEY}&q=${encodedQuery}&image_type=all`;
         const resourse = await fetch(url);
         const data = await resourse.json();
         const fetchData = await data.hits;
@@ -25,23 +26,16 @@ export default function Photos(props) {
             likes: item.likes,
             comments: item.comments,
             downloads: item.downloads,
-            views:item.views,
-            user: item.user,
-            tags: item.tags,
+            views: item.views,
         }));
         setImages(filteredData);
         setProgress(100);
-        
-    }
+    }, [searchTerm, API_KEY]);
 
     useEffect(() => {
         FetchData();
-        
-    }, []);
-    //useEffect(() => {
-    //    console.log('Images:', images);
-    //},[images])
-    
+    }, [searchTerm, FetchData]);
+
     return (
         <>
             <LoadingBar
@@ -61,7 +55,7 @@ export default function Photos(props) {
                                     likes={image.likes}
                                     views={image.views}
                                     comments={image.comments}
-                                    downloads={image.downloads }
+                                    downloads={image.downloads}
                                 />
                             </div>
                         })
