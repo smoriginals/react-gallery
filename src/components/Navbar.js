@@ -4,6 +4,7 @@ import '../App.css'
 export default function Navbar(props) {
 
     const [inputValue, setInputValue] = useState('');
+    //const [searchTerm, setSearchTerm] = useState('red rose');
 
     const HandleChange = (e) => {
         setInputValue(e.target.value);
@@ -17,7 +18,7 @@ export default function Navbar(props) {
 
     const HandleClick = () => {
         if (inputValue.trim() !== '') {
-            props.setSearchTerm(inputValue.trim());
+            props.setSearchTerm(inputValue);
             setInputValue('');
         }
     }
